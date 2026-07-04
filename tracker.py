@@ -19,6 +19,9 @@ def print_main_menu():
 def print_search_menu():
     print("1. Search using ID \n2. Search using Category \n3. Search using Amount \n4. Back")
 
+def print_reports_menu():
+    print("1. Total Spent \n2. Average Spent \n3. Highest Expense \n4. Lowest Expense \n5. Total Transaction \n6. Category Summary \n7. Monthly Summary \n8. Top 5 Expenses \n9. Complete Summary \n10. Back")
+
 def print_export_menu():
     print("1. Export All Expenses \n2. Export by Category \n3. Export by Amount Range \n4. Back")
 

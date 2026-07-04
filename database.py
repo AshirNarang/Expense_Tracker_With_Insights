@@ -7,14 +7,13 @@ def connect():
         host=config.DB_HOST,
         user=config.DB_USER,
         password=config.DB_PASSWORD,
-        
+        database=config.DB_DATABASE,
     )
 
 def setup():
     conn = connect()
     cursor = conn.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS expence_tracker")
-    cursor.execute("USE expence_tracker")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS expenses (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,7 +30,6 @@ def setup():
 def insert_expense(date,category,amt,desc):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "INSERT INTO expenses (date,category,amount,description) VALUES(%s,%s,%s,%s)"
     data = (date,category,amt,desc)
     cursor.execute(query,data)
@@ -44,7 +42,6 @@ def insert_expense(date,category,amt,desc):
 def get_expense():
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     cursor.execute("SELECT * FROM expenses")
     rows = cursor.fetchall()
     conn.close()
@@ -53,7 +50,6 @@ def get_expense():
 def get_details(id):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "SELECT * FROM expenses WHERE id=%s"
     cursor.execute(query,(id,))
     row = cursor.fetchall()
@@ -63,7 +59,6 @@ def get_details(id):
 def delete_details(id):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "DELETE FROM expenses WHERE id=%s"
     cursor.execute(query,(id,))
     conn.commit()
@@ -72,7 +67,6 @@ def delete_details(id):
 def search_details_by_ID(search):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "SELECT * FROM expenses WHERE id=%s"
     cursor.execute(query,(search,))
     details = cursor.fetchall()
@@ -82,7 +76,6 @@ def search_details_by_ID(search):
 def search_details_by_category(search):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "SELECT * FROM expenses WHERE category=%s"
     cursor.execute(query,(search,))
     details = cursor.fetchall()
@@ -92,7 +85,6 @@ def search_details_by_category(search):
 def search_details_by_amount(search):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "SELECT * FROM expenses WHERE amount=%s"
     cursor.execute(query,(search,))
     details = cursor.fetchall()
@@ -102,7 +94,6 @@ def search_details_by_amount(search):
 def update_details(id,date,category,amt,desc):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("USE expence_tracker")
     query = "UPDATE expenses SET date=%s , category=%s , amount=%s , description=%s WHERE id=%s"
     data = (date,category,amt,desc,id)
     cursor.execute(query,data)

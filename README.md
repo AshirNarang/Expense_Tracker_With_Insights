@@ -9,16 +9,23 @@ A command-line expense tracking application built in Python with a MySQL backend
 - 🔍 **Search Expenses** — by ID, category, or amount
 - ✏️ **Update Expenses** — edit any existing record
 - 🗑️ **Delete Expenses** — remove records with a confirmation prompt
-- 📊 **Reports** — generate summary insights from your spending
 - 📤 **Export to CSV** — export all data, or filter by category/amount
 - 📥 **Import from CSV** — load expense data from an existing file
 - 🗄️ **MySQL Backend** — persistent, structured storage
+- 📊 **Pandas-Powered Reports & Insights**
+  - Total spent, average spent, maximum & minimum transaction
+  - Total transaction count
+  - Category-wise spending summary
+  - Monthly spending summary (grouped by month)
+  - Top 5 highest expenses
+  - Complete summary report combining all insights
 
 ## Tech Stack
 
 - **Language:** Python 3.14
 - **Database:** MySQL
-- **Libraries:** `mysql-connector-python`
+- **Libraries:** `mysql-connector-python`, `pandas`
+
 
 ## Project Structure
 
@@ -91,11 +98,13 @@ Follow the on-screen prompts to navigate.
 
 ## Roadmap
 
-- [ ] **v2:** Pandas-powered data analysis and insights
+- [x] **v1:** Core CLI expense tracker with MySQL backend
+- [x] **v2:** Pandas-powered data analysis and insights
 - [ ] **v3:** GUI / Web interface
 - [ ] **v4:** Machine Learning-based spending predictions and anomaly detection
 - [ ] **v5:** AI-powered insights and recommendations
 - [ ] Multi-user support
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.

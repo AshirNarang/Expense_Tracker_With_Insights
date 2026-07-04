@@ -1,5 +1,6 @@
 import tracker
 import database
+import reports
 
 database.setup()
 database.connect()
@@ -28,7 +29,30 @@ while True:
     elif choice==5:
         tracker.deleat_expense()
     elif choice==6:
-        print("WIP")
+        tracker.print_reports_menu()
+        option = tracker.choose_selection()
+        if option==1:
+            reports.total_spent()
+        elif option==2:
+            reports.average_spent()
+        elif option==3:
+            reports.maximum_spent()
+        elif option==4:
+            reports.minimum_spent()
+        elif option==5:
+            reports.total_transactions()
+        elif option==6:
+            reports.category_summary()
+        elif option==7:
+            reports.monthly_summary()
+        elif option==8:
+            reports.top_5_spent()
+        elif option==9:
+            reports.complete_summury()
+        elif option==10:
+                print("Exiting....")
+        else:
+            print("Please Enter a Valid Option")
     elif choice==7:
         tracker.file_check()
         tracker.print_export_menu()
